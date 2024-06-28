@@ -1,0 +1,21 @@
+name: Color Logger
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  log-color:
+    name: Log Color
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    # Choose Color
+    - name: Set selected color
+      run: echo "SELECTED_COLOR=green" >> $GITHUB_OUTPUT
+      id: color-selector
+     
+    # Log Color
+    - name: Get selected color
+      run: echo "The selected color is ${{ steps.color-selector.outputs.SELECTED_COLOR }}"
